@@ -178,3 +178,90 @@ if (loadMoreButton) {
 }
 
 renderProducts();
+
+// Featured carousel
+
+const featuredSlider = document.querySelector('.featured__slider');
+const featuredPrevButton = document.querySelector('.slider-control--prev');
+const featuredNextButton = document.querySelector('.slider-control--next');
+
+if (featuredSlider && featuredPrevButton && featuredNextButton) {
+  const featuredCards = Array.from(
+    featuredSlider.querySelectorAll('.product-card')
+  );
+
+  let currentSlide = 0;
+
+  function getVisibleCardsCount() {
+    if (window.innerWidth <= 480) {
+      return 1;
+    }
+
+    if (window.innerWidth <= 768) {
+      return 2;
+    }
+
+    return 4;
+  }
+
+  function getSlideStep() {
+    if (featuredCards.length === 0) {
+      return 0;
+    }
+
+    const cardWidth = featuredCards[0].getBoundingClientRect().width;
+    const sliderStyles = window.getComputedStyle(featuredSlider);
+    const gap = Number.parseFloat(sliderStyles.columnGap) || 0;
+
+    return cardWidth + gap;
+  }
+
+  function updateCarousel(behavior = 'smooth') {
+    const visibleCards = getVisibleCardsCount();
+    const maxSlide = Math.max(
+      0,
+      featuredCards.length - visibleCards
+    );
+
+    if (currentSlide > maxSlide) {
+      currentSlide = maxSlide;
+    }
+
+    featuredSlider.scrollTo({
+      left: currentSlide * getSlideStep(),
+      behavior,
+    });
+  }
+
+  featuredNextButton.addEventListener('click', () => {
+    const visibleCards = getVisibleCardsCount();
+    const maxSlide = Math.max(
+      0,
+      featuredCards.length - visibleCards
+    );
+
+    currentSlide = currentSlide >= maxSlide
+      ? 0
+      : currentSlide + 1;
+
+    updateCarousel();
+  });
+
+  featuredPrevButton.addEventListener('click', () => {
+    const visibleCards = getVisibleCardsCount();
+    const maxSlide = Math.max(
+      0,
+      featuredCards.length - visibleCards
+    );
+
+    currentSlide = currentSlide <= 0
+      ? maxSlide
+      : currentSlide - 1;
+
+    updateCarousel();
+  });
+
+  window.addEventListener('resize', () => {
+    updateCarousel('auto');
+  });
+}
