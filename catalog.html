@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="ATELIER 70 catalog — curated vintage furniture and collectible design."
+    >
+    <title>Catalog — ATELIER 70</title>
+
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container header__inner">
+        <a class="logo" href="index.html" aria-label="ATELIER 70 home">
+          <span class="logo__name">ATELIER 70</span>
+          <span class="logo__description">Vintage Furniture & Objects</span>
+        </a>
+
+        <nav class="navigation" aria-label="Main navigation">
+          <ul class="navigation__list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalog.html">Catalog</a></li>
+            <li><a href="index.html#categories">Categories</a></li>
+            <li><a href="index.html#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header__actions">
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+            aria-pressed="false"
+          >
+            <span class="theme-toggle__sun" aria-hidden="true">☀</span>
+            <span class="theme-toggle__moon" aria-hidden="true">☾</span>
+          </button>
+
+          <button
+            class="burger"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="catalog-hero">
+        <div class="container">
+          <p class="eyebrow">The collection</p>
+
+          <h1>Objects with a<br>story to tell.</h1>
+
+          <div class="catalog-hero__bottom">
+            <p>
+              A curated selection of original vintage furniture and objects
+              from the 1950s through the 1970s.
+            </p>
+
+            <span>01 — 08</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalog" aria-labelledby="catalog-title">
+        <div class="container">
+          <div class="catalog__header">
+            <div>
+              <p class="eyebrow">Explore</p>
+              <h2 id="catalog-title">The Collection</h2>
+            </div>
+
+            <div class="catalog-tabs" aria-label="Product categories">
+              <button
+                class="catalog-tab catalog-tab--active"
+                id="seating"
+                type="button"
+              >
+                Seating
+              </button>
+
+              <button
+                class="catalog-tab"
+                id="tables"
+                type="button"
+              >
+                Tables
+              </button>
+
+              <button
+                class="catalog-tab"
+                id="lighting"
+                type="button"
+              >
+                Lighting
+              </button>
+            </div>
+          </div>
+
+          <div class="catalog-grid">
+            <article class="catalog-card">
+              <div class="catalog-card__image">
+                <img
+                  src="assets/images/seating-01.webp"
+                  alt="Cognac leather vintage lounge chair"
+                >
+              </div>
+
+              <div class="catalog-card__top">
+                <h3>Cognac Lounge Chair</h3>
+                <span>€1,850</span>
+              </div>
+
+              <p>Italian design · 1970s</p>
+              <span class="catalog-card__meta">Leather · Chrome</span>
+            </article>
+
+            <article class="catalog-card">
+              <div class="catalog-card__image">
+                <img
+                  src="assets/images/seating-02.webp"
+                  alt="Vintage bouclé armchair"
+                >
+              </div>
+
+              <div class="catalog-card__top">
+                <h3>Bouclé Armchair</h3>
+                <span>€1,490</span>
+              </div>
+
+              <p>French design · 1960s</p>
+              <span class="catalog-card__meta">Bouclé · Oak</span>
+            </article>
+
+            <article class="catalog-card">
+              <div class="catalog-card__image">
+                <img
+                  src="assets/images/seating-03.webp"
+                  alt="Vintage chrome cantilever chair"
+                >
+              </div>
+
+              <div class="catalog-card__top">
+                <h3>Cantilever Chair</h3>
+                <span>€980</span>
+              </div>
+
+              <p>European design · 1970s</p>
+              <span class="catalog-card__meta">Leather · Chrome</span>
+            </article>
+
+            <article class="catalog-card">
+              <div class="catalog-card__image">
+                <img
+                  src="assets/images/seating-04.webp"
+                  alt="Vintage walnut lounge chair"
+                >
+              </div>
+
+              <div class="catalog-card__top">
+                <h3>Walnut Lounge Chair</h3>
+                <span>€1,650</span>
+              </div>
+
+              <p>Scandinavian design · 1960s</p>
+              <span class="catalog-card__meta">Walnut · Textile</span>
+            </article>
+
+            <article class="catalog-card">
+              <div class="catalog-card__image">
+                <img
+                  src="assets/images/seating-05.webp"
+                  alt="Italian vintage leather club chair"
+                >
+              </div>
+
+              <div class="catalog-card__top">
+                <h3>Leather Club Chair</h3>
+                <span>€2,100</span>
+              </div>
+
+              <p>Italian design · 1970s</p>
+              <span class="catalog-card__meta">Leather · Wood</span>
+            </article>
+
+            <article class="catalog-card">
+              <div class="catalog-card__image">
+                <img
+                  src="assets/images/seating-06.webp"
+                  alt="Sculptural vintage accent chair"
+                >
+              </div>
+
+              <div class="catalog-card__top">
+                <h3>Sculptural Chair</h3>
+                <span>€1,320</span>
+              </div>
+
+              <p>European design · 1960s</p>
+              <span class="catalog-card__meta">Fabric · Steel</span>
+            </article>
+
+            <article class="catalog-card">
+              <div class="catalog-card__image">
+                <img
+                  src="assets/images/seating-07.webp"
+                  alt="Vintage oak and canvas safari chair"
+                >
+              </div>
+
+              <div class="catalog-card__top">
+                <h3>Safari Chair</h3>
+                <span>€1,180</span>
+              </div>
+
+              <p>Scandinavian design · 1960s</p>
+              <span class="catalog-card__meta">Oak · Canvas</span>
+            </article>
+
+            <article class="catalog-card">
+              <div class="catalog-card__image">
+                <img
+                  src="assets/images/seating-08.webp"
+                  alt="Vintage modular lounge chair"
+                >
+              </div>
+
+              <div class="catalog-card__top">
+                <h3>Modular Lounge Chair</h3>
+                <span>€1,950</span>
+              </div>
+
+              <p>Italian design · 1970s</p>
+              <span class="catalog-card__meta">Textile · Foam</span>
+            </article>
+          </div>
+
+          <div class="catalog__more">
+            <button class="button button--outline" type="button">
+              Load More
+            </button>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer__top">
+          <a
+            class="logo logo--footer"
+            href="index.html"
+            aria-label="ATELIER 70 home"
+          >
+            <span class="logo__name">ATELIER 70</span>
+            <span class="logo__description">Vintage Furniture & Objects</span>
+          </a>
+
+          <nav class="footer__navigation" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Catalog</a>
+            <a href="index.html#categories">Categories</a>
+            <a href="index.html#about">About</a>
+          </nav>
+
+          <div class="footer__contact">
+            <p>Questions about a piece?</p>
+
+            <a href="mailto:shunko1999@gmail.com">
+              shunko1999@gmail.com
+            </a>
+
+            <div class="footer__external">
+              <a
+                href="https://github.com/sailoksis"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+
+              <a
+                href="https://rs.school/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RS School
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <span>© 2026 ATELIER 70</span>
+          <span>Authentic · Sustainable · Timeless</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
