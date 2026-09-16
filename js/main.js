@@ -21,3 +21,75 @@ themeToggle.addEventListener('click', () => {
 
   localStorage.setItem('atelier-theme', isDark ? 'dark' : 'light');
 });
+
+const catalogGrid = document.querySelector('.catalog-grid');
+
+function createProductCard(product) {
+  const card = document.createElement('article');
+  card.classList.add('catalog-card');
+  card.dataset.productId = product.id;
+
+  card.innerHTML = `
+    <div class="catalog-card__image">
+      <img
+        src="${product.image}"
+        alt="${product.name}, ${product.period}"
+      >
+    </div>
+
+    <div class="catalog-card__content">
+      <p class="catalog-card__meta">
+        ${product.origin} · ${product.period}
+      </p>
+
+      <h2 class="catalog-card__title">${product.name}</h2>
+
+      <p class="catalog-card__material">
+        ${product.material}
+      </p>
+
+      <p class="catalog-card__price">
+        €${product.price.toLocaleString('en-US')}
+      </p>
+    </div>
+  `;
+
+  return card;
+}
+
+function renderProducts(category = 'seating') {
+  if (!catalogGrid || typeof products === 'undefined') {
+    return;
+  }
+
+  const categoryProducts = products.filter(
+    (product) => product.category === category
+  );
+
+  catalogGrid.replaceChildren();
+
+  categoryProducts.forEach((product) => {
+    catalogGrid.append(createProductCard(product));
+  });
+}
+
+renderProducts();
+
+
+const catalogTabs = document.querySelectorAll('.catalog-tab');
+
+catalogTabs.forEach((tab) => {
+  tab.addEventListener('click', () => {
+    const category = tab.dataset.category;
+
+    catalogTabs.forEach((item) => {
+      item.classList.remove('catalog-tab--active');
+      item.setAttribute('aria-pressed', 'false');
+    });
+
+    tab.classList.add('catalog-tab--active');
+    tab.setAttribute('aria-pressed', 'true');
+
+    renderProducts(category);
+  });
+});

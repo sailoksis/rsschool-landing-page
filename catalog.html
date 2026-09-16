@@ -94,168 +94,39 @@
   role="group"
   aria-label="Product categories"
 >
-              <button
-                class="catalog-tab catalog-tab--active"
-                id="seating"
-                type="button"
-              >
-                Seating
-              </button>
+<div class="catalog-tabs" role="group" aria-label="Product categories">
+  <button
+    class="catalog-tab catalog-tab--active"
+    type="button"
+    data-category="seating"
+    aria-pressed="true"
+  >
+    Seating
+  </button>
 
-              <button
-                class="catalog-tab"
-                id="tables"
-                type="button"
-              >
-                Tables
-              </button>
+  <button
+    class="catalog-tab"
+    type="button"
+    data-category="tables"
+    aria-pressed="false"
+  >
+    Tables
+  </button>
 
-              <button
-                class="catalog-tab"
-                id="lighting"
-                type="button"
-              >
-                Lighting
-              </button>
+  <button
+    class="catalog-tab"
+    type="button"
+    data-category="lighting"
+    aria-pressed="false"
+  >
+    Lighting
+  </button>
+</div>
             </div>
           </div>
 
           <div class="catalog-grid">
-            <article class="catalog-card">
-              <div class="catalog-card__image">
-                <img
-                  src="assets/images/seating-01.webp"
-                  alt="Cognac leather vintage lounge chair"
-                >
-              </div>
 
-              <div class="catalog-card__top">
-                <h3>Cognac Lounge Chair</h3>
-                <span>€1,850</span>
-              </div>
-
-              <p>Italian design · 1970s</p>
-              <span class="catalog-card__meta">Leather · Chrome</span>
-            </article>
-
-            <article class="catalog-card">
-              <div class="catalog-card__image">
-                <img
-                  src="assets/images/seating-02.webp"
-                  alt="Vintage bouclé armchair"
-                >
-              </div>
-
-              <div class="catalog-card__top">
-                <h3>Bouclé Armchair</h3>
-                <span>€1,490</span>
-              </div>
-
-              <p>French design · 1960s</p>
-              <span class="catalog-card__meta">Bouclé · Oak</span>
-            </article>
-
-            <article class="catalog-card">
-              <div class="catalog-card__image">
-                <img
-                  src="assets/images/seating-03.webp"
-                  alt="Vintage chrome cantilever chair"
-                >
-              </div>
-
-              <div class="catalog-card__top">
-                <h3>Cantilever Chair</h3>
-                <span>€980</span>
-              </div>
-
-              <p>European design · 1970s</p>
-              <span class="catalog-card__meta">Leather · Chrome</span>
-            </article>
-
-            <article class="catalog-card">
-              <div class="catalog-card__image">
-                <img
-                  src="assets/images/seating-04.webp"
-                  alt="Vintage walnut lounge chair"
-                >
-              </div>
-
-              <div class="catalog-card__top">
-                <h3>Walnut Lounge Chair</h3>
-                <span>€1,650</span>
-              </div>
-
-              <p>Scandinavian design · 1960s</p>
-              <span class="catalog-card__meta">Walnut · Textile</span>
-            </article>
-
-            <article class="catalog-card">
-              <div class="catalog-card__image">
-                <img
-                  src="assets/images/seating-05.webp"
-                  alt="Italian vintage leather club chair"
-                >
-              </div>
-
-              <div class="catalog-card__top">
-                <h3>Leather Club Chair</h3>
-                <span>€2,100</span>
-              </div>
-
-              <p>Italian design · 1970s</p>
-              <span class="catalog-card__meta">Leather · Wood</span>
-            </article>
-
-            <article class="catalog-card">
-              <div class="catalog-card__image">
-                <img
-                  src="assets/images/seating-06.webp"
-                  alt="Sculptural vintage accent chair"
-                >
-              </div>
-
-              <div class="catalog-card__top">
-                <h3>Sculptural Chair</h3>
-                <span>€1,320</span>
-              </div>
-
-              <p>European design · 1960s</p>
-              <span class="catalog-card__meta">Fabric · Steel</span>
-            </article>
-
-            <article class="catalog-card">
-              <div class="catalog-card__image">
-                <img
-                  src="assets/images/seating-07.webp"
-                  alt="Vintage oak and canvas safari chair"
-                >
-              </div>
-
-              <div class="catalog-card__top">
-                <h3>Safari Chair</h3>
-                <span>€1,180</span>
-              </div>
-
-              <p>Scandinavian design · 1960s</p>
-              <span class="catalog-card__meta">Oak · Canvas</span>
-            </article>
-
-            <article class="catalog-card">
-              <div class="catalog-card__image">
-                <img
-                  src="assets/images/seating-08.webp"
-                  alt="Vintage modular lounge chair"
-                >
-              </div>
-
-              <div class="catalog-card__top">
-                <h3>Modular Lounge Chair</h3>
-                <span>€1,950</span>
-              </div>
-
-              <p>Italian design · 1970s</p>
-              <span class="catalog-card__meta">Textile · Foam</span>
-            </article>
           </div>
 
           <div class="catalog__more">
@@ -319,7 +190,7 @@
         </div>
       </div>
     </footer>
-
+    <script src="js/products.js"></script>
     <script src="js/main.js"></script>
   </body>
 </html>
