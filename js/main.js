@@ -265,3 +265,148 @@ if (featuredSlider && featuredPrevButton && featuredNextButton) {
     updateCarousel('auto');
   });
 }
+
+
+// Product modal
+
+const productModal = document.querySelector('.product-modal');
+
+function getProductById(productId) {
+  if (typeof products === 'undefined') {
+    return null;
+  }
+
+  return products.find((product) => product.id === productId);
+}
+
+function createProductModalContent(product) {
+  return `
+    <div
+      class="product-modal__dialog"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="product-modal-title"
+    >
+      <button
+        class="product-modal__close"
+        type="button"
+        aria-label="Close product details"
+      >
+        &times;
+      </button>
+
+      <div class="product-modal__image">
+        <img
+          src="${product.image}"
+          alt="${product.name}, ${product.period}"
+        >
+      </div>
+
+      <div class="product-modal__content">
+        <p class="product-modal__meta">
+          ${product.origin} · ${product.period}
+        </p>
+
+        <h2
+          class="product-modal__title"
+          id="product-modal-title"
+        >
+          ${product.name}
+        </h2>
+
+        <p class="product-modal__designer">
+          ${product.designer}
+        </p>
+
+        <p class="product-modal__description">
+          ${product.description}
+        </p>
+
+        <dl class="product-modal__details">
+          <div class="product-modal__detail">
+            <dt>Period</dt>
+            <dd>${product.period}</dd>
+          </div>
+
+          <div class="product-modal__detail">
+            <dt>Origin</dt>
+            <dd>${product.origin}</dd>
+          </div>
+
+          <div class="product-modal__detail">
+            <dt>Material</dt>
+            <dd>${product.material}</dd>
+          </div>
+        </dl>
+
+        <p class="product-modal__price">
+          €${product.price.toLocaleString('en-US')}
+        </p>
+      </div>
+    </div>
+  `;
+}
+
+function openProductModal(product) {
+  if (!productModal) {
+    return;
+  }
+
+  productModal.innerHTML = createProductModalContent(product);
+
+  productModal.classList.add('product-modal--open');
+  productModal.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+
+  const closeButton = productModal.querySelector(
+    '.product-modal__close'
+  );
+
+  if (closeButton) {
+    closeButton.focus();
+  }
+}
+
+function closeProductModal() {
+  if (!productModal) {
+    return;
+  }
+
+  productModal.classList.remove('product-modal--open');
+  productModal.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+}
+
+if (catalogGrid && productModal) {
+  catalogGrid.addEventListener('click', (event) => {
+    const card = event.target.closest('.catalog-card');
+
+    if (!card) {
+      return;
+    }
+
+    const product = getProductById(card.dataset.productId);
+
+    if (product) {
+      openProductModal(product);
+    }
+  });
+
+  productModal.addEventListener('click', (event) => {
+    if (
+      event.target === productModal
+      || event.target.closest('.product-modal__close')
+    ) {
+      closeProductModal();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (
+      event.key === 'Escape'
+      && productModal.classList.contains('product-modal--open')
+    ) {
+      closeProductModal();
+    }
+  });
+}

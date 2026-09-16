@@ -1329,3 +1329,216 @@ body.menu-open {
     top: 72px;
   }
 }
+
+/* Product modal */
+
+body.modal-open {
+  overflow: hidden;
+}
+
+.product-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  background: rgb(0 0 0 / 55%);
+  visibility: hidden;
+  opacity: 0;
+  transition:
+    opacity 0.3s ease,
+    visibility 0.3s ease;
+}
+
+.product-modal--open {
+  visibility: visible;
+  opacity: 1;
+}
+
+.product-modal__dialog {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  width: min(100%, 1000px);
+  max-height: calc(100vh - 64px);
+  overflow: auto;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  box-shadow: 0 24px 80px rgb(0 0 0 / 25%);
+}
+
+.product-modal__image {
+  min-height: 560px;
+  background: var(--color-bg);
+}
+
+.product-modal__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.product-modal__content {
+  display: flex;
+  flex-direction: column;
+  padding: 64px 48px 48px;
+}
+
+.product-modal__meta {
+  margin: 0 0 16px;
+  color: var(--color-muted);
+  font-size: 12px;
+  line-height: 1.4;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.product-modal__title {
+  margin: 0 0 8px;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 0.95;
+}
+
+.product-modal__designer {
+  margin: 0 0 32px;
+  color: var(--color-muted);
+  font-size: 14px;
+}
+
+.product-modal__description {
+  margin: 0 0 32px;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
+.product-modal__details {
+  display: grid;
+  gap: 12px;
+  margin: 0 0 40px;
+  padding: 24px 0;
+  border-top: 1px solid var(--color-line);
+  border-bottom: 1px solid var(--color-line);
+}
+
+.product-modal__detail {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.product-modal__detail dt,
+.product-modal__detail dd {
+  margin: 0;
+}
+
+.product-modal__detail dt {
+  color: var(--color-muted);
+}
+
+.product-modal__detail dd {
+  text-align: right;
+}
+
+.product-modal__price {
+  margin: auto 0 0;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 36px;
+  line-height: 1;
+}
+
+.product-modal__close {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 2;
+  display: grid;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  place-items: center;
+  color: var(--color-text);
+  font-size: 28px;
+  line-height: 1;
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    background-color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.product-modal__close:hover {
+  transform: rotate(90deg);
+}
+
+@media (max-width: 768px) {
+  .product-modal {
+    padding: 24px;
+  }
+
+  .product-modal__dialog {
+    grid-template-columns: 1fr;
+    max-height: calc(100vh - 48px);
+  }
+
+  .product-modal__image {
+    min-height: 0;
+    height: 320px;
+  }
+
+  .product-modal__content {
+    padding: 40px 32px 32px;
+  }
+
+  .product-modal__title {
+    font-size: 42px;
+  }
+}
+
+@media (max-width: 480px) {
+  .product-modal {
+    padding: 16px;
+  }
+
+  .product-modal__dialog {
+    max-height: calc(100vh - 32px);
+  }
+
+  .product-modal__image {
+    height: 240px;
+  }
+
+  .product-modal__content {
+    padding: 32px 20px 24px;
+  }
+
+  .product-modal__title {
+    padding-right: 36px;
+    font-size: 36px;
+  }
+
+  .product-modal__description {
+    margin-bottom: 24px;
+  }
+
+  .product-modal__details {
+    margin-bottom: 28px;
+  }
+
+  .product-modal__price {
+    font-size: 32px;
+  }
+
+  .product-modal__close {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+  }
+}
