@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta
+      name="description"
+      content="ATELIER 70 — curated vintage furniture and collectible design."
+    >
+    <title>ATELIER 70 — Vintage Furniture & Objects</title>
+
+    <link rel="icon" href="assets/images/favicon.svg" type="image/svg+xml">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="css/style.css">
+  </head>
+
+  <body>
+    <header class="header">
+      <div class="container header__inner">
+        <a class="logo" href="index.html" aria-label="ATELIER 70 home">
+          <span class="logo__name">ATELIER 70</span>
+          <span class="logo__description">Vintage Furniture & Objects</span>
+        </a>
+
+        <nav class="navigation" aria-label="Main navigation">
+          <ul class="navigation__list">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalog.html">Catalog</a></li>
+            <li><a href="#categories">Categories</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </nav>
+
+        <div class="header__actions">
+          <button
+            class="theme-toggle"
+            type="button"
+            aria-label="Switch to dark theme"
+            aria-pressed="false"
+          >
+            <span class="theme-toggle__sun" aria-hidden="true">☀</span>
+            <span class="theme-toggle__moon" aria-hidden="true">☾</span>
+          </button>
+
+          <button
+            class="burger"
+            type="button"
+            aria-label="Open navigation menu"
+            aria-expanded="false"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero__inner">
+          <div class="hero__content">
+            <p class="eyebrow">Timeless design for modern living</p>
+
+            <h1>Vintage Pieces.<br>New Stories.</h1>
+
+            <p class="hero__description">
+              A curated collection of authentic furniture and objects
+              created by remarkable designers of the twentieth century.
+            </p>
+
+            <a class="button button--primary" href="catalog.html">
+              Explore collection
+              <span aria-hidden="true">→</span>
+            </a>
+
+            <div class="hero__pagination" aria-label="Slide 1 of 3">
+              <span class="hero__pagination-active">01</span>
+              <span>02</span>
+              <span>03</span>
+            </div>
+          </div>
+
+          <div class="hero__visual">
+            <img
+              src="assets/images/hero.webp"
+              alt="Vintage living room with collectible furniture"
+            >
+
+            <div class="hero__caption">
+              <span>Original. Iconic. Sustainable.</span>
+              <span>Italian design, 1970s</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="featured" id="featured">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Selected objects</p>
+              <h2>Featured Pieces</h2>
+            </div>
+
+            <div class="featured__heading-actions">
+              <div class="slider-controls" aria-label="Featured pieces controls">
+                <button
+                  class="slider-control slider-control--prev"
+                  type="button"
+                  aria-label="Previous featured piece"
+                >
+                  ←
+                </button>
+
+                <button
+                  class="slider-control slider-control--next"
+                  type="button"
+                  aria-label="Next featured piece"
+                >
+                  →
+                </button>
+              </div>
+
+              <a class="text-link" href="catalog.html">
+                View all <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+
+          <div class="featured__slider">
+            <article class="product-card">
+              <div class="product-card__image">
+                <img
+                  src="assets/images/chair-01.webp"
+                  alt="Vintage lounge chair"
+                >
+              </div>
+              <h3>Gae Aulenti Lounge Chair</h3>
+              <p>Italy · 1970s</p>
+              <span class="product-card__price">€ 2,900</span>
+            </article>
+
+            <article class="product-card">
+              <div class="product-card__image">
+                <img
+                  src="assets/images/lamp-01.webp"
+                  alt="Vintage table lamp"
+                >
+              </div>
+              <h3>Martinelli Luce Lamp</h3>
+              <p>Italy · 1960s</p>
+              <span class="product-card__price">€ 1,450</span>
+            </article>
+
+            <article class="product-card">
+              <div class="product-card__image">
+                <img
+                  src="assets/images/table-01.webp"
+                  alt="Travertine coffee table"
+                >
+              </div>
+              <h3>Travertine Coffee Table</h3>
+              <p>Italy · 1970s</p>
+              <span class="product-card__price">€ 2,200</span>
+            </article>
+
+            <article class="product-card">
+              <div class="product-card__image">
+                <img
+                  src="assets/images/sideboard-01.webp"
+                  alt="Vintage wooden sideboard"
+                >
+              </div>
+              <h3>Ico Parisi Sideboard</h3>
+              <p>Italy · 1950s</p>
+              <span class="product-card__price">€ 4,800</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="categories" id="categories">
+        <div class="container">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Explore the collection</p>
+              <h2>Shop by Category</h2>
+            </div>
+          </div>
+
+          <div class="categories__grid">
+            <a class="category-card" href="catalog.html#seating">
+              <img
+                src="assets/images/category-seating.webp"
+                alt="Vintage seating collection"
+              >
+              <div class="category-card__content">
+                <h3>Seating</h3>
+                <span>Explore →</span>
+              </div>
+            </a>
+
+            <a class="category-card" href="catalog.html#tables">
+              <img
+                src="assets/images/category-tables.webp"
+                alt="Vintage tables collection"
+              >
+              <div class="category-card__content">
+                <h3>Tables</h3>
+                <span>Explore →</span>
+              </div>
+            </a>
+
+            <a class="category-card" href="catalog.html#lighting">
+              <img
+                src="assets/images/category-lighting.webp"
+                alt="Vintage lighting collection"
+              >
+              <div class="category-card__content">
+                <h3>Lighting</h3>
+                <span>Explore →</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="story" id="about">
+        <div class="container story__inner">
+          <div class="story__image">
+            <img
+              src="assets/images/story.webp"
+              alt="Curated vintage furniture in an interior"
+            >
+          </div>
+
+          <div class="story__content">
+            <p class="eyebrow">Our story</p>
+
+            <h2>Design that deserves another chapter.</h2>
+
+            <p>
+              ATELIER 70 is a curated archive of twentieth-century furniture
+              and objects. We believe exceptional design should be preserved,
+              appreciated and lived with rather than replaced.
+            </p>
+
+            <blockquote>
+              “Good design does not belong to a decade. It becomes part of
+              the way we live.”
+            </blockquote>
+
+            <a class="text-link" href="catalog.html">
+              Discover the collection <span aria-hidden="true">→</span>
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contact">
+      <div class="container">
+        <div class="footer__top">
+          <a
+            class="logo logo--footer"
+            href="index.html"
+            aria-label="ATELIER 70 home"
+          >
+            <span class="logo__name">ATELIER 70</span>
+            <span class="logo__description">Vintage Furniture & Objects</span>
+          </a>
+
+          <nav class="footer__navigation" aria-label="Footer navigation">
+            <a href="index.html">Home</a>
+            <a href="catalog.html">Catalog</a>
+            <a href="#categories">Categories</a>
+            <a href="#about">About</a>
+          </nav>
+
+          <div class="footer__contact">
+            <p>Questions about a piece?</p>
+
+            <a href="mailto:shunko1999@gmail.com">
+              shunko1999@gmail.com
+            </a>
+
+            <div class="footer__external">
+              <a
+                href="https://github.com/sailoksis"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+
+              <a
+                href="https://rs.school/"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                RS School
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer__bottom">
+          <span>© 2026 ATELIER 70</span>
+          <span>Authentic · Sustainable · Timeless</span>
+        </div>
+      </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
