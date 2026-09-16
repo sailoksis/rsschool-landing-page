@@ -280,6 +280,54 @@ function getProductById(productId) {
 }
 
 function createProductModalContent(product) {
+  const conditionOptions = product.parameters.condition
+    .map(
+      (option, index) => `
+        <button
+          class="product-option${index === 0 ? ' product-option--active' : ''}"
+          type="button"
+          data-parameter="condition"
+          data-price="${option.price}"
+          aria-pressed="${index === 0}"
+        >
+          <span>${option.name}</span>
+          <span>
+            ${option.price === 0
+              ? 'Included'
+              : `+€${option.price.toLocaleString('en-US')}`}
+          </span>
+        </button>
+      `
+    )
+    .join('');
+
+  const deliveryOptions = product.parameters.delivery
+    .map(
+      (option, index) => `
+        <button
+          class="product-option${index === 0 ? ' product-option--active' : ''}"
+          type="button"
+          data-parameter="delivery"
+          data-price="${option.price}"
+          aria-pressed="${index === 0}"
+        >
+          <span>${option.name}</span>
+          <span>
+            ${option.price === 0
+              ? 'Included'
+              : `+€${option.price.toLocaleString('en-US')}`}
+          </span>
+        </button>
+      `
+    )
+    .join('');
+
+  const initialConditionPrice = product.parameters.condition[0].price;
+  const initialDeliveryPrice = product.parameters.delivery[0].price;
+  const initialOptionsPrice =
+    initialConditionPrice + initialDeliveryPrice;
+  const initialTotal = product.price + initialOptionsPrice;
+
   return `
     <div
       class="product-modal__dialog"
@@ -339,9 +387,58 @@ function createProductModalContent(product) {
           </div>
         </dl>
 
-        <p class="product-modal__price">
-          €${product.price.toLocaleString('en-US')}
-        </p>
+        <div class="product-parameters">
+          <fieldset class="product-parameter">
+            <legend class="product-parameter__title">
+              Condition
+            </legend>
+
+            <div class="product-parameter__options">
+              ${conditionOptions}
+            </div>
+          </fieldset>
+
+          <fieldset class="product-parameter">
+            <legend class="product-parameter__title">
+              Delivery
+            </legend>
+
+            <div class="product-parameter__options">
+              ${deliveryOptions}
+            </div>
+          </fieldset>
+        </div>
+
+        <div
+          class="product-modal__summary"
+          data-base-price="${product.price}"
+        >
+          <div class="product-modal__summary-row">
+            <span>Base price</span>
+            <span>
+              €${product.price.toLocaleString('en-US')}
+            </span>
+          </div>
+
+          <div class="product-modal__summary-row">
+            <span>Selected options</span>
+            <span class="product-modal__options-price">
+              +€${initialOptionsPrice.toLocaleString('en-US')}
+            </span>
+          </div>
+
+          <div
+            class="
+              product-modal__summary-row
+              product-modal__summary-row--total
+            "
+          >
+            <span>Total</span>
+            <span class="product-modal__price">
+              €${initialTotal.toLocaleString('en-US')}
+            </span>
+          </div>
+        </div>
       </div>
     </div>
   `;
@@ -377,6 +474,69 @@ function closeProductModal() {
   document.body.classList.remove('modal-open');
 }
 
+function updateProductModalPrice() {
+  if (!productModal) {
+    return;
+  }
+
+  const summary = productModal.querySelector(
+    '.product-modal__summary'
+  );
+
+  const optionsPriceElement = productModal.querySelector(
+    '.product-modal__options-price'
+  );
+
+  const totalPriceElement = productModal.querySelector(
+    '.product-modal__price'
+  );
+
+  if (!summary || !optionsPriceElement || !totalPriceElement) {
+    return;
+  }
+
+  const basePrice = Number(summary.dataset.basePrice);
+
+  const activeOptions = productModal.querySelectorAll(
+    '.product-option--active'
+  );
+
+  const optionsPrice = Array.from(activeOptions).reduce(
+    (total, option) => total + Number(option.dataset.price),
+    0
+  );
+
+  const totalPrice = basePrice + optionsPrice;
+
+  optionsPriceElement.textContent =
+    `+€${optionsPrice.toLocaleString('en-US')}`;
+
+  totalPriceElement.textContent =
+    `€${totalPrice.toLocaleString('en-US')}`;
+}
+
+function selectProductOption(option) {
+  if (!productModal) {
+    return;
+  }
+
+  const parameter = option.dataset.parameter;
+
+  const parameterOptions = productModal.querySelectorAll(
+    `.product-option[data-parameter="${parameter}"]`
+  );
+
+  parameterOptions.forEach((item) => {
+    item.classList.remove('product-option--active');
+    item.setAttribute('aria-pressed', 'false');
+  });
+
+  option.classList.add('product-option--active');
+  option.setAttribute('aria-pressed', 'true');
+
+  updateProductModalPrice();
+}
+
 if (catalogGrid && productModal) {
   catalogGrid.addEventListener('click', (event) => {
     const card = event.target.closest('.catalog-card');
@@ -393,6 +553,11 @@ if (catalogGrid && productModal) {
   });
 
   productModal.addEventListener('click', (event) => {
+    const option = event.target.closest('.product-option');
+    if (option) {
+      selectProductOption(option);
+      return;
+    }
     if (
       event.target === productModal
       || event.target.closest('.product-modal__close')
