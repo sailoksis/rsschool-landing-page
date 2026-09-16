@@ -23,6 +23,13 @@ themeToggle.addEventListener('click', () => {
 });
 
 const catalogGrid = document.querySelector('.catalog-grid');
+const catalogTabs = document.querySelectorAll('.catalog-tab');
+const loadMoreButton = document.querySelector('.catalog__more .button');
+
+const INITIAL_PRODUCTS_COUNT = 4;
+
+let activeCategory = 'seating';
+let showAllProducts = false;
 
 function createProductCard(product) {
   const card = document.createElement('article');
@@ -57,30 +64,37 @@ function createProductCard(product) {
   return card;
 }
 
-function renderProducts(category = 'seating') {
+function renderProducts() {
   if (!catalogGrid || typeof products === 'undefined') {
     return;
   }
 
   const categoryProducts = products.filter(
-    (product) => product.category === category
+    (product) => product.category === activeCategory
   );
+
+  const visibleProducts = showAllProducts
+    ? categoryProducts
+    : categoryProducts.slice(0, INITIAL_PRODUCTS_COUNT);
 
   catalogGrid.replaceChildren();
 
-  categoryProducts.forEach((product) => {
+  visibleProducts.forEach((product) => {
     catalogGrid.append(createProductCard(product));
   });
+
+  if (loadMoreButton) {
+    const hasHiddenProducts =
+      visibleProducts.length < categoryProducts.length;
+
+    loadMoreButton.hidden = !hasHiddenProducts;
+  }
 }
-
-renderProducts();
-
-
-const catalogTabs = document.querySelectorAll('.catalog-tab');
 
 catalogTabs.forEach((tab) => {
   tab.addEventListener('click', () => {
-    const category = tab.dataset.category;
+    activeCategory = tab.dataset.category;
+    showAllProducts = false;
 
     catalogTabs.forEach((item) => {
       item.classList.remove('catalog-tab--active');
@@ -90,6 +104,15 @@ catalogTabs.forEach((tab) => {
     tab.classList.add('catalog-tab--active');
     tab.setAttribute('aria-pressed', 'true');
 
-    renderProducts(category);
+    renderProducts();
   });
 });
+
+if (loadMoreButton) {
+  loadMoreButton.addEventListener('click', () => {
+    showAllProducts = true;
+    renderProducts();
+  });
+}
+
+renderProducts();
