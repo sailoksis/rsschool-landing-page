@@ -22,6 +22,68 @@ themeToggle.addEventListener('click', () => {
   localStorage.setItem('atelier-theme', isDark ? 'dark' : 'light');
 });
 
+const burgerButton = document.querySelector('.burger');
+const navigation = document.querySelector('.navigation');
+const navigationLinks = document.querySelectorAll('.navigation a');
+
+function openMenu() {
+  if (!burgerButton || !navigation) {
+    return;
+  }
+
+  navigation.classList.add('navigation--open');
+  burgerButton.classList.add('burger--open');
+  document.body.classList.add('menu-open');
+
+  burgerButton.setAttribute('aria-expanded', 'true');
+  burgerButton.setAttribute('aria-label', 'Close navigation menu');
+}
+
+function closeMenu() {
+  if (!burgerButton || !navigation) {
+    return;
+  }
+
+  navigation.classList.remove('navigation--open');
+  burgerButton.classList.remove('burger--open');
+  document.body.classList.remove('menu-open');
+
+  burgerButton.setAttribute('aria-expanded', 'false');
+  burgerButton.setAttribute('aria-label', 'Open navigation menu');
+}
+
+if (burgerButton && navigation) {
+  burgerButton.addEventListener('click', () => {
+    const isOpen = navigation.classList.contains('navigation--open');
+
+    if (isOpen) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  navigationLinks.forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (
+      event.key === 'Escape'
+      && navigation.classList.contains('navigation--open')
+    ) {
+      closeMenu();
+      burgerButton.focus();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (window.innerWidth >= 769) {
+      closeMenu();
+    }
+  });
+}
+
 const catalogGrid = document.querySelector('.catalog-grid');
 const catalogTabs = document.querySelectorAll('.catalog-tab');
 const loadMoreButton = document.querySelector('.catalog__more .button');
